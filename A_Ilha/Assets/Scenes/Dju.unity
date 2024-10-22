@@ -547,6 +547,59 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 75297634}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &77660958
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 77660959}
+  - component: {fileID: 77660960}
+  m_Layer: 0
+  m_Name: PlayerMovementState
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &77660959
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77660958}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1569767017}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &77660960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 77660958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f53bf4bd30e3fc04191267b952b1ea02, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 1569767021}
+  speed: 5
+  orientation: {fileID: 658217124}
+  direction: {x: 0, y: 0, z: 0}
+  playerHeight: 3
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  groundDrag: 1
 --- !u!1 &101676843
 GameObject:
   m_ObjectHideFlags: 0
@@ -1927,6 +1980,8 @@ MonoBehaviour:
   sensX: 500
   sensY: 500
   orientation: {fileID: 658217124}
+  xRotation: 0
+  yRotation: 0
 --- !u!1 &384656309
 GameObject:
   m_ObjectHideFlags: 0
@@ -8547,8 +8602,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1569767017}
   - component: {fileID: 1569767018}
-  - component: {fileID: 1569767019}
   - component: {fileID: 1569767020}
+  - component: {fileID: 1569767021}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -8572,6 +8627,7 @@ Transform:
   - {fileID: 521574343}
   - {fileID: 658217124}
   - {fileID: 462331718}
+  - {fileID: 77660959}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1569767018
@@ -8601,37 +8657,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 0
   m_CollisionDetection: 1
---- !u!114 &1569767019
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1569767016}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f53bf4bd30e3fc04191267b952b1ea02, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 5
-  orientation: {fileID: 658217124}
-  direction: {x: 0, y: 0, z: 0}
-  playerInput: {fileID: 0}
-  movementAction:
-    m_Name: Movement
-    m_Type: 0
-    m_ExpectedControlType: 
-    m_Id: a2f355c6-05c4-45f1-8f4f-dc83b2b74906
-    m_Processors: 
-    m_Interactions: 
-    m_SingletonActionBindings: []
-    m_Flags: 0
-  playerHeight: 3
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  isGrounded: 0
-  groundDrag: 1
 --- !u!114 &1569767020
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8662,6 +8687,32 @@ MonoBehaviour:
   m_DefaultActionMap: Movement
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1569767021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569767016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ac71ae4c76e42628c1153d21b813b8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CurrentState: {fileID: 0}
+  PlayerMovementState: {fileID: 77660960}
+  IsPaused: 0
+  _playerInput: {fileID: 1569767020}
+  _movementAction:
+    m_Name: Movement
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 639266f9-e74c-4291-ad63-d126845dbf93
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  rb: {fileID: 0}
 --- !u!1 &1575237210
 GameObject:
   m_ObjectHideFlags: 0

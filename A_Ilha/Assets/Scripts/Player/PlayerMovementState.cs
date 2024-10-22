@@ -1,16 +1,13 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
 
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovementState : State
 {
-    [Header("Components")]
-    private Rigidbody _rb;
+    public Player Player;
+    
     
     [Header("Input")]
     private Vector2 _movementInput;
-    private PlayerInput _playerInput;
-    private InputAction _movementAction;
     
     [Header("Movement")]
     [SerializeField] private float speed;
@@ -23,48 +20,57 @@ public class PlayerMovement : MonoBehaviour
     private bool _isGrounded;
     [SerializeField] private float groundDrag;
     
-    
-    private void Start()
-    {
-        _rb = GetComponent<Rigidbody>();
-        _rb.freezeRotation = true;
-        _playerInput = GetComponent<PlayerInput>();
-        _movementAction = _playerInput.actions["move"];
-    }
 
     private void MyInput()
     {
-        _movementInput = _movementAction.ReadValue<Vector2>();
+        _movementInput = Player._movementAction.ReadValue<Vector2>();
     }
 
    private void MovePlayer() {
         
         direction = orientation.forward * _movementInput.y + orientation.right * _movementInput.x;
-        _rb.AddForce(direction.normalized * (speed * 10f), ForceMode.Force);
+        Player.rb.AddForce(direction.normalized * (speed * 10f), ForceMode.Force);
     }
 
     private void SpeedControl()
     {
-        var flatVelocity = new Vector3(_rb.velocity.x, 0, _rb.velocity.z);
+        var flatVelocity = new Vector3(Player.rb.velocity.x, 0, Player.rb.velocity.z);
         if (!(flatVelocity.magnitude > speed)) return;
         var limitedVelocity = flatVelocity.normalized * speed;
-        _rb.velocity = new Vector3(limitedVelocity.x, _rb.velocity.y, limitedVelocity.z);
+        Player.rb.velocity = new Vector3(limitedVelocity.x, Player.rb.velocity.y, limitedVelocity.z);
+    }
+    
+
+    public override void Enter()
+    {
+        Player.rb.freezeRotation = true;
     }
 
-    private void FixedUpdate()
-    {
-        MovePlayer();
-    }
-    private void Update()
+    public override void Do()
     {
         MyInput();    
         SpeedControl();
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayer);
         if (_isGrounded)
         {
-            _rb.drag = groundDrag;
+            Player.rb.drag = groundDrag;
         } else {
-            _rb.drag = 0; 
+            Player.rb.drag = 0; 
         }
+    }
+
+    public override void FixedDo()
+    {
+        MovePlayer();
+    }
+
+    public override void LateDo()
+    {
+        //throw new System.NotImplementedException();
+    }
+
+    public override void Exit()
+    {
+        //throw new System.NotImplementedException();
     }
 }
