@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public GameState State;    
     public Player player;
     public Canvas menuPause;
+    public Transform spawnPlayerCheckpoint;
 
     private void Awake()
     {

@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
 
     private void Start()
     {
+        transform.position = GameManager.Instance.spawnPlayerCheckpoint.transform.position;
         //manager.ResumeGame();
         rb = GetComponent<Rigidbody>();
         //rb.freezeRotation = true;
@@ -66,5 +67,23 @@ public class Player : MonoBehaviour
 
     public void ResumePlay()
     {
+    }
+
+    public void Kill()
+    {
+        // chamar tela de morte 
+        // tirar move state
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("morte"))
+        {
+            Kill();
+        }
+        if (collision.gameObject.CompareTag("checkpointSpawn"))
+        {
+            GameManager.Instance.spawnPlayerCheckpoint = transform;
+        }
     }
 }
