@@ -24,6 +24,10 @@ public class PlayerMovementState : State
     private void MyInput()
     {
         _movementInput = Player._movementAction.ReadValue<Vector2>();
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            GameManager.Instance.PauseGame();
+        }
     }
 
    private void MovePlayer() {

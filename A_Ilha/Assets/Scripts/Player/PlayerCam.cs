@@ -9,10 +9,6 @@ public class PlayerCam : MonoBehaviour
     public Transform orientation;
     public float xRotation, yRotation;
     
-    private void Start() {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
     
     private void Update()
     {

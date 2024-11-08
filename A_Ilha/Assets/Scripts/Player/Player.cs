@@ -46,7 +46,7 @@ public class Player : MonoBehaviour
         CurrentState.LateDo();
     }
 
-    public void ChangeState(State newState)
+    private void ChangeState(State newState)
     {
         try
         {
