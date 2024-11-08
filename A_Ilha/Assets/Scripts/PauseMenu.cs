@@ -5,13 +5,13 @@ public class PauseMenu : MonoBehaviour
 {
     public Button resumePlay;
 
-    void Start()
+    private void Start()
     {
         resumePlay.onClick.AddListener(ResumeGame);
     }
 
 
-    private void ResumeGame()
+    private static void ResumeGame()
     {
         GameManager.Instance.ResumeGame();
     }

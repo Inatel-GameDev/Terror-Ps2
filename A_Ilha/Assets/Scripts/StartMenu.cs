@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class StartMenu : MonoBehaviour
+
+public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    public Button newGame;
+
+    private void Start()
     {
-        
+        newGame.onClick.AddListener(StartNewGame);    
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private static void StartNewGame()
     {
-        
+        GameManager.Instance.LoadScene(GameManager.Scene.Mapa);
     }
 }
