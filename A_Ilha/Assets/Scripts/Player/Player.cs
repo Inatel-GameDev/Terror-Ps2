@@ -4,16 +4,20 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    [Header("State")]
+    // teste webhook
     [SerializeField] public State CurrentState;
+
     [SerializeField] public PlayerMovementState PlayerMovementState;
-    [SerializeField] public PlayerDeadState PlayerDeadState;
     
-    [Header("Movement")]
+    [SerializeField] private bool IsPaused;
     public PlayerInput _playerInput;
     public InputAction _movementAction;
+
+    //[SerializeField] public GameManager manager;
     public Rigidbody rb;
-    
+    //public Anim anim;
+
+
     private void Start()
     {
         transform.position = GameManager.Instance.spawnPlayerCheckpoint.transform.position;
@@ -44,9 +48,8 @@ public class Player : MonoBehaviour
         CurrentState.LateDo();
     }
 
-    public void ChangeState(State newState)
+    private void ChangeState(State newState)
     {
-        Debug.Log("trocou estado - " + newState);
         try
         {
             CurrentState.Exit();
@@ -67,13 +70,11 @@ public class Player : MonoBehaviour
     {
     }
 
-    private void Kill()
+    public void Kill()
     {
-        Debug.Log("morreu");
-        ChangeState(PlayerDeadState);
-        GameManager.Instance.DeadPlayer();
+        // chamar tela de morte 
+        // tirar move state
     }
-    
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -83,7 +84,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("checkpointSpawn"))
         {
-            GameManager.Instance.spawnPlayerCheckpoint = collision.gameObject.transform;
+            GameManager.Instance.spawnPlayerCheckpoint = transform;
         }
     }
 }
