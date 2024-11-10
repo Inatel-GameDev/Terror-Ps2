@@ -3,11 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    // Modelo Singleton 
+    // Modelo Singleton
+    [Header("Singleton")]
     public static GameManager Instance;
-    public GameState State;    
-    public Player player;
+    public GameState State;
+    
+    [Header("Canvas")]
     public Canvas menuPause;
+    public Canvas menuDead;
+    
+    [Header("Player")]
+    public Player player;
     public Transform spawnPlayerCheckpoint;
 
     private void Awake()
@@ -20,7 +26,13 @@ public class GameManager : MonoBehaviour
 
     public void RestartGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        menuDead.gameObject.SetActive(false);
+        player.gameObject.transform.position = spawnPlayerCheckpoint.position;
+        ResumeGame();
+        player.ChangeState(player.PlayerMovementState);
+        // setar player status 
+        // setar posicao monstro e status 
+        // setar objetivos 
     }
 
     public void LoadScene(Scene scene)
@@ -33,9 +45,17 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         State = GameState.Pause;
-        //player.IsPaused = true;
         Time.timeScale = 0f;
         menuPause.gameObject.SetActive(true);
+    }
+
+    public void DeadPlayer()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        State = GameState.Pause;
+        Time.timeScale = 0f;
+        menuDead.gameObject.SetActive(true);
     }
 
     public void ResumeGame()
@@ -43,7 +63,6 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         State = GameState.Action;
-        //player.IsPaused = false;
         Time.timeScale = 1f;
         menuPause.gameObject.SetActive(false);
     }

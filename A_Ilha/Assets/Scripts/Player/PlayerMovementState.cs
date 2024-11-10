@@ -38,10 +38,10 @@ public class PlayerMovementState : State
 
     private void SpeedControl()
     {
-        var flatVelocity = new Vector3(Player.rb.velocity.x, 0, Player.rb.velocity.z);
+        var flatVelocity = new Vector3(Player.rb.linearVelocity.x, 0, Player.rb.linearVelocity.z);
         if (!(flatVelocity.magnitude > speed)) return;
         var limitedVelocity = flatVelocity.normalized * speed;
-        Player.rb.velocity = new Vector3(limitedVelocity.x, Player.rb.velocity.y, limitedVelocity.z);
+        Player.rb.linearVelocity = new Vector3(limitedVelocity.x, Player.rb.linearVelocity.y, limitedVelocity.z);
     }
     
 
@@ -57,9 +57,9 @@ public class PlayerMovementState : State
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayer);
         if (_isGrounded)
         {
-            Player.rb.drag = groundDrag;
+            Player.rb.linearDamping = groundDrag;
         } else {
-            Player.rb.drag = 0; 
+            Player.rb.linearDamping = 0; 
         }
     }
 
