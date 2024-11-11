@@ -4,19 +4,26 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
-    // teste webhook
+    [Header("States")]
     [SerializeField] public State CurrentState;
-
     [SerializeField] public PlayerMovementState PlayerMovementState;
     [SerializeField] public PlayerDeadState PlayerDeadState;
     
     [SerializeField] private bool IsPaused;
+    
+    [Header("Inputs")]
     public PlayerInput _playerInput;
     public InputAction _movementAction;
-
-    //[SerializeField] public GameManager manager;
     public Rigidbody rb;
-    //public Anim anim;
+
+    [Header("Item")] 
+    private Item _itemAtual;
+
+    public Item ItemAtual
+    {
+        get => _itemAtual;
+        set => _itemAtual = value;
+    }
 
 
     private void Start()
@@ -71,7 +78,7 @@ public class Player : MonoBehaviour
     {
     }
 
-    public void Kill()
+    private void Kill()
     {
         ChangeState(PlayerDeadState);
         GameManager.Instance.DeadPlayer();
