@@ -1847,6 +1847,7 @@ MonoBehaviour:
   CurrentState: {fileID: 217171794}
   PlayerMovementState: {fileID: 217171794}
   PlayerDeadState: {fileID: 1386531987}
+  IsPaused: 0
   _playerInput: {fileID: 1121708582}
   _movementAction:
     m_Name: Movement

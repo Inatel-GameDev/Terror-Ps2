@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
     [SerializeField] public State CurrentState;
 
     [SerializeField] public PlayerMovementState PlayerMovementState;
+    [SerializeField] public PlayerDeadState PlayerDeadState;
     
     [SerializeField] private bool IsPaused;
     public PlayerInput _playerInput;
@@ -48,7 +49,7 @@ public class Player : MonoBehaviour
         CurrentState.LateDo();
     }
 
-    private void ChangeState(State newState)
+    public void ChangeState(State newState)
     {
         try
         {
@@ -72,8 +73,8 @@ public class Player : MonoBehaviour
 
     public void Kill()
     {
-        // chamar tela de morte 
-        // tirar move state
+        ChangeState(PlayerDeadState);
+        GameManager.Instance.DeadPlayer();
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -84,7 +85,7 @@ public class Player : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("checkpointSpawn"))
         {
-            GameManager.Instance.spawnPlayerCheckpoint = transform;
+            GameManager.Instance.spawnPlayerCheckpoint = collision.gameObject.transform;
         }
     }
 }
