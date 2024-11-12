@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [Header("Canvas")]
     public Canvas menuPause;
     public Canvas menuDead;
+    public Canvas menuEnd;
     
     [Header("Player")]
     public Player player;
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         menuDead.gameObject.SetActive(false);
+        menuEnd.gameObject.SetActive(false);
         player.gameObject.transform.position = spawnPlayerCheckpoint.position;
         ResumeGame();
         player.ChangeState(player.PlayerMovementState);
@@ -57,6 +59,16 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         menuDead.gameObject.SetActive(true);
     }
+    
+    public void EndGame()
+    {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+        State = GameState.Pause;
+        Time.timeScale = 0f;
+        menuEnd.gameObject.SetActive(true);
+    }
+
 
     public void ResumeGame()
     {

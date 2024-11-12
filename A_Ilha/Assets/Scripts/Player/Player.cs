@@ -29,14 +29,10 @@ public class Player : MonoBehaviour
     private void Start()
     {
         transform.position = GameManager.Instance.spawnPlayerCheckpoint.transform.position;
-        //manager.ResumeGame();
         rb = GetComponent<Rigidbody>();
-        //rb.freezeRotation = true;
-        //CurrentState = FreeWalkState;
         ChangeState(PlayerMovementState);
         _playerInput = GetComponent<PlayerInput>();
         _movementAction = _playerInput.actions["move"];
-        CurrentState.Enter();
     }
 
     private void Update()
@@ -46,8 +42,6 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //if (Input.GetKeyDown(KeyCode.T)) manager.PauseGame();
-        //if (Input.GetKeyDown(KeyCode.P)) ChangeState(DriveState);
         CurrentState.FixedDo();
     }
 
@@ -90,9 +84,21 @@ public class Player : MonoBehaviour
         {
             Kill();
         }
-        if (collision.gameObject.CompareTag("checkpointSpawn"))
+    }
+
+    private void OnTriggerEnter(Collider trigger)
+    {
+        switch (trigger.gameObject.tag)
         {
-            GameManager.Instance.spawnPlayerCheckpoint = collision.gameObject.transform;
+            case "checkpointSpawn":
+                GameManager.Instance.spawnPlayerCheckpoint = trigger.gameObject.transform;
+                break;
+            case "EndGame":
+                ChangeState(PlayerDeadState);
+                GameManager.Instance.EndGame();
+                break;
         }
     }
+    
+    
 }
