@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     {
         Player = GameObject.FindWithTag("Player");
         EnemyRB = transform.gameObject.GetComponent<Rigidbody>();
-        EnemyRB.maxLinearVelocity=5.0f;
+        EnemyRB.maxLinearVelocity= 2.0f;
         
         ChangeState(EnemyAtackState);
     }

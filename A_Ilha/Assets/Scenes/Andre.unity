@@ -14,19 +14,19 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogMode: 2
+  m_FogDensity: 0.1
   m_LinearFogStart: 0
-  m_LinearFogEnd: 300
-  m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
+  m_LinearFogEnd: 50
+  m_AmbientSkyColor: {r: 0.07849767, g: 0.090067625, b: 0.11320752, a: 1}
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
   m_AmbientMode: 0
-  m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SubtractiveShadowColor: {r: 0.16349237, g: 0.17543943, b: 0.20754719, a: 1}
+  m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -37,7 +37,7 @@ RenderSettings:
   m_ReflectionBounces: 1
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
-  m_Sun: {fileID: 0}
+  m_Sun: {fileID: 1192864540}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2439,7 +2439,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 716873702}
-  speed: 0.5
+  speed: 2
 --- !u!1 &1192864539
 GameObject:
   m_ObjectHideFlags: 0
@@ -2467,7 +2467,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 0.16641437, g: 0.2840521, b: 0.41911763, a: 1}
+  m_Color: {r: 0.17782128, g: 0.25249887, b: 0.33962262, a: 1}
   m_Intensity: 0.59
   m_Range: 10
   m_SpotAngle: 30
@@ -2938,7 +2938,7 @@ MonoBehaviour:
   State: 0
   menuPause: {fileID: 802705894}
   menuDead: {fileID: 468491680}
-  menuEnd: {fileID: 0}
+  menuEnd: {fileID: 802705894}
   player: {fileID: 1861404655}
   spawnPlayerCheckpoint: {fileID: 1525709940}
 --- !u!4 &1683364314
@@ -3630,6 +3630,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Player: {fileID: 1861404655}
   speed: 5
+  maxSpeed: 5
   orientation: {fileID: 2140298034}
   direction: {x: 0, y: 0, z: 0}
   playerHeight: 3
