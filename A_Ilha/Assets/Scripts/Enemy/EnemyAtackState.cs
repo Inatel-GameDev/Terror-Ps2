@@ -3,21 +3,18 @@ using UnityEngine;
 public class EnemyAtackState : State
 {
 
-    [SerializeField] private GameObject Player;
-    [SerializeField] private Rigidbody EnemyRB;
+    [SerializeField] private Enemy _enemy;
     [SerializeField] private float speed = 0.5f;
 
 
     public override void Enter()
     {
-        Player = GameObject.FindWithTag("Player");
-        EnemyRB = transform.parent.gameObject.GetComponent<Rigidbody>();
+
     }
 
     public override void Do()
     {
-            EnemyRB.AddForce((Player.transform.position  - transform.position).normalized * speed, ForceMode.Impulse);
-
+        _enemy.EnemyRB.AddForce((_enemy.Player.transform.position  - transform.position).normalized * speed, ForceMode.Impulse);
     }
 
     public override void FixedDo()
