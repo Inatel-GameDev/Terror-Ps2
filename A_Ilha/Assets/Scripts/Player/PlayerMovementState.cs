@@ -10,7 +10,7 @@ public class PlayerMovementState : State
     private Vector2 _movementInput;
     
     [Header("Movement")]
-    [SerializeField] private float speed;
+    [SerializeField] private float acceleration;
     [SerializeField] private float maxSpeed;
     [SerializeField] private Transform orientation;
     [SerializeField] private Vector3 direction;
@@ -34,7 +34,7 @@ public class PlayerMovementState : State
    private void MovePlayer() {
         
         direction = orientation.forward * _movementInput.y + orientation.right * _movementInput.x;
-        Player.rb.AddForce(direction.normalized * (speed * 10f), ForceMode.Force);
+        Player.rb.AddForce(direction.normalized * (acceleration * 10f), ForceMode.Force);
     }
 
     public override void Enter()
