@@ -11,6 +11,7 @@ public class PlayerMovementState : State
     
     [Header("Movement")]
     [SerializeField] private float speed;
+    [SerializeField] private float maxSpeed;
     [SerializeField] private Transform orientation;
     [SerializeField] private Vector3 direction;
     
@@ -36,24 +37,16 @@ public class PlayerMovementState : State
         Player.rb.AddForce(direction.normalized * (speed * 10f), ForceMode.Force);
     }
 
-    private void SpeedControl()
-    {
-        var flatVelocity = new Vector3(Player.rb.linearVelocity.x, 0, Player.rb.linearVelocity.z);
-        if (!(flatVelocity.magnitude > speed)) return;
-        var limitedVelocity = flatVelocity.normalized * speed;
-        Player.rb.linearVelocity = new Vector3(limitedVelocity.x, Player.rb.linearVelocity.y, limitedVelocity.z);
-    }
-    
-
     public override void Enter()
     {
+        Player.rb.maxLinearVelocity = maxSpeed;
         Player.rb.freezeRotation = true;
     }
 
     public override void Do()
     {
         MyInput();    
-        SpeedControl();
+        
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, groundLayer);
         if (_isGrounded)
         {
