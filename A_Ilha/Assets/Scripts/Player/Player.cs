@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField] private AudioPlayer _audioPlayer;
+    
     [Header("States")]
     [SerializeField] public State CurrentState;
     [SerializeField] public PlayerMovementState PlayerMovementState;

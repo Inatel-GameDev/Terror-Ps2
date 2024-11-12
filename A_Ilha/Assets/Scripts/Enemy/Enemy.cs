@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
+
+    [SerializeField] private AudioEnemy _audioEnemy; 
+        
     [SerializeField] public Rigidbody EnemyRB;
     [Header("States")]
     [SerializeField] public State CurrentState;

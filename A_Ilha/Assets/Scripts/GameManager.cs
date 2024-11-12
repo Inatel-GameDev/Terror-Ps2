@@ -3,6 +3,8 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    [SerializeField] private AudioGeral audioGeral;
+    
     // Modelo Singleton
     [Header("Singleton")]
     public static GameManager Instance;

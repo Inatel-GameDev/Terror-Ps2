@@ -1,0 +1,10 @@
+﻿
+    using UnityEngine;
+
+    public class AudioEnemy:AudioManager
+    {
+        [Header("Sons")]
+        [SerializeField] private AudioClip pegada;
+        [SerializeField] private AudioClip batimento;
+
+    }
