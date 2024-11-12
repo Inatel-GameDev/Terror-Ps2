@@ -3,14 +3,10 @@ using UnityEngine;
 public class EnemyListeningState : State
 {
 
-    [SerializeField] private GameObject Player;
-    [SerializeField] private Rigidbody EnemyRB;
-
-
+    [SerializeField] private Enemy _enemy;
+    
     public override void Enter()
     {
-        Player = GameObject.FindWithTag("Player");
-        EnemyRB = transform.parent.gameObject.GetComponent<Rigidbody>();
     }
 
     public override void Do()

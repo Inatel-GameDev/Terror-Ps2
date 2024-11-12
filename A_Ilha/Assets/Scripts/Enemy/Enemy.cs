@@ -4,23 +4,22 @@ using UnityEngine.InputSystem;
 
 public class Enemy : MonoBehaviour
 {
-    // teste webhook
+    [Header("States")]
     [SerializeField] public State CurrentState;
     [SerializeField] public EnemyAtackState EnemyAtackState;
     [SerializeField] public EnemyListeningState EnemyListeningState;
+    
+    
+    [SerializeField] public GameObject Player;
+    [SerializeField] public Rigidbody EnemyRB;
 
-
-
-
-
+    
     private void Start()
     {
-
+        Player = GameObject.FindWithTag("Player");
+        EnemyRB = transform.parent.gameObject.GetComponent<Rigidbody>();
+        
         ChangeState(EnemyAtackState);
-
-        CurrentState.Enter();
-
-
     }
 
     private void Update()
@@ -30,10 +29,7 @@ public class Enemy : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         CurrentState.FixedDo();
-   
-        
     }
 
     private void LateUpdate()
