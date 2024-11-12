@@ -14,6 +14,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] public Rigidbody EnemyRB;
 
 
+  
+    
     private void Start()
     {
         Player = GameObject.FindWithTag("Player");
