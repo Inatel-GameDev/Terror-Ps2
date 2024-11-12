@@ -13,11 +13,12 @@ public class Enemy : MonoBehaviour
     [SerializeField] public GameObject Player;
     [SerializeField] public Rigidbody EnemyRB;
 
-    
+
     private void Start()
     {
         Player = GameObject.FindWithTag("Player");
-        EnemyRB = transform.parent.gameObject.GetComponent<Rigidbody>();
+        EnemyRB = transform.gameObject.GetComponent<Rigidbody>();
+        EnemyRB.maxLinearVelocity=5.0f;
         
         ChangeState(EnemyAtackState);
     }
