@@ -4,7 +4,7 @@ public class EnemyAtackState : State
 {
 
     [SerializeField] private Enemy _enemy;
-    [SerializeField] private float speed = 0.5f;
+    [SerializeField] private float speed = 5f;
 
 
     public override void Enter()
