@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class DeadMenu : MonoBehaviour
+public class RestartMenu : MonoBehaviour
 {
     public Button respawn;
 

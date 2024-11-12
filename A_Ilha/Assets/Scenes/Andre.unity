@@ -1749,11 +1749,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0b421cbb8854f94fa354120f26efa01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioEnemy: {fileID: 0}
+  EnemyRB: {fileID: 0}
   CurrentState: {fileID: 1168646329}
   EnemyAtackState: {fileID: 1168646329}
   EnemyListeningState: {fileID: 2038257619}
+  EnemySniffingState: {fileID: 0}
   Player: {fileID: 0}
-  EnemyRB: {fileID: 0}
+  distanciaPlayer: 0
 --- !u!136 &716873703
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1859,7 +1862,7 @@ GameObject:
   - component: {fileID: 802705894}
   - component: {fileID: 802705893}
   - component: {fileID: 802705892}
-  - component: {fileID: 802705891}
+  - component: {fileID: 802705895}
   m_Layer: 0
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -1889,19 +1892,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &802705891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 802705889}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d35c7ace4534fa439c2553e29a530d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resumePlay: {fileID: 919610844}
 --- !u!114 &802705892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1965,6 +1955,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
+--- !u!114 &802705895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802705889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fb769a1aaf7be47a35e08c6675453e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resumePlay: {fileID: 919610844}
 --- !u!1 &866764093
 GameObject:
   m_ObjectHideFlags: 0
@@ -3496,11 +3499,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8653f9a3ed2b5141896cf8a6bbc77a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioGeral: {fileID: 0}
   State: 0
   menuPause: {fileID: 802705894}
   menuDead: {fileID: 468491680}
   menuEnd: {fileID: 1220741950}
   player: {fileID: 1861404655}
+  playerObj: {fileID: 0}
   spawnPlayerCheckpoint: {fileID: 1525709940}
 --- !u!4 &1683364314
 Transform:
@@ -3929,6 +3934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2ac71ae4c76e42628c1153d21b813b8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _audioPlayer: {fileID: 0}
   CurrentState: {fileID: 2082139492}
   PlayerMovementState: {fileID: 2082139492}
   PlayerDeadState: {fileID: 958400115}

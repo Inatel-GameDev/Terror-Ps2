@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class MainMenu : MonoBehaviour
+public class StartMenu : MonoBehaviour
 {
     public Button newGame;
 

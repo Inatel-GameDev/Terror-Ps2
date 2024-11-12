@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,7 +17,7 @@ public class GameManager : MonoBehaviour
     public Canvas menuEnd;
     
     [Header("Player")]
-    public Player player;
+    public Player player; 
     public Transform spawnPlayerCheckpoint;
 
     private void Awake()
@@ -31,7 +32,7 @@ public class GameManager : MonoBehaviour
     {
         menuDead.gameObject.SetActive(false);
         menuEnd.gameObject.SetActive(false);
-        player.gameObject.transform.position = spawnPlayerCheckpoint.position;
+        player.transform.position = spawnPlayerCheckpoint.position;
         ResumeGame();
         player.ChangeState(player.PlayerMovementState);
         // setar player status 

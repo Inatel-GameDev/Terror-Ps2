@@ -415,7 +415,7 @@ GameObject:
   - component: {fileID: 95818403}
   - component: {fileID: 95818402}
   - component: {fileID: 95818401}
-  - component: {fileID: 95818400}
+  - component: {fileID: 95818404}
   m_Layer: 0
   m_Name: PauseMenu
   m_TagString: Untagged
@@ -445,19 +445,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &95818400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 95818398}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d35c7ace4534fa439c2553e29a530d4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  resumePlay: {fileID: 1252811728}
 --- !u!114 &95818401
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -521,6 +508,19 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 100
   m_TargetDisplay: 0
+--- !u!114 &95818404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 95818398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 65fb769a1aaf7be47a35e08c6675453e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resumePlay: {fileID: 1252811728}
 --- !u!1001 &174273367
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4033,6 +4033,7 @@ MonoBehaviour:
   menuDead: {fileID: 1922672681}
   menuEnd: {fileID: 189286609}
   player: {fileID: 504070234}
+  playerObj: {fileID: 0}
   spawnPlayerCheckpoint: {fileID: 759283400}
 --- !u!4 &1657869345
 Transform:
