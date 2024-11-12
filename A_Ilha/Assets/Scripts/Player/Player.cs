@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
         }
         CurrentState = newState;
         CurrentState.Enter();
+      
     }
 
     public void Pause()

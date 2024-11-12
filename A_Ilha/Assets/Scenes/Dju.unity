@@ -1334,8 +1334,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemy: {fileID: 1695081599}
-  acceleration: 10
-  maxSpeed: 15
+  acceleration: 2
+  maxSpeed: 5
 --- !u!4 &670898891
 Transform:
   m_ObjectHideFlags: 0
@@ -3703,6 +3703,7 @@ MonoBehaviour:
   EnemyListeningState: {fileID: 1387823003}
   Player: {fileID: 0}
   EnemyRB: {fileID: 0}
+  distanciaPlayer: 0
 --- !u!136 &1695081600
 CapsuleCollider:
   m_ObjectHideFlags: 0
