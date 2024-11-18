@@ -54,7 +54,7 @@ public class Enemy : MonoBehaviour
         EnemyRB = transform.gameObject.GetComponent<Rigidbody>();      
         
         ChangeState(EnemyAtackState);
-        //StartCoroutine(DecideState());
+        StartCoroutine(DecideState());
     }
 
     private void Update()

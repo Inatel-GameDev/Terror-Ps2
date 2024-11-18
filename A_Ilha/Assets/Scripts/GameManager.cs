@@ -20,6 +20,9 @@ public class GameManager : MonoBehaviour
     public Player player; 
     public Transform spawnPlayerCheckpoint;
 
+    [Header("Enemy")]
+    public Enemy enemy;
+    
     private void Awake()
     {
         Instance = this;
@@ -56,6 +59,11 @@ public class GameManager : MonoBehaviour
 
     public void DeadPlayer()
     {
+        enemy.ChangeState(enemy.EnemyListeningState);
+        
+        // reset temporario enquanto n tem a logica do quadrante 
+        enemy.transform.position = new Vector3(530,8,213);
+        
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
         State = GameState.Pause;
