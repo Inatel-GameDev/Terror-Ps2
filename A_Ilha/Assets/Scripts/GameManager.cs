@@ -22,6 +22,10 @@ public class GameManager : MonoBehaviour
 
     [Header("Enemy")]
     public Enemy enemy;
+
+    [Header("Objetivos")]
+    public ObjetivosFeitos objetivosFeitos = ObjetivosFeitos.NaoFezNada;
+    
     
     private void Awake()
     {
@@ -105,6 +109,19 @@ public class GameManager : MonoBehaviour
         Action,
         Shop,
         Loading
+    }
+    
+    public enum ObjetivosFeitos
+    {
+        NaoFezNada,
+        ChegouNaAldeia,
+        InvestigouCasas,
+        ChegouNaIgreja,
+        DesfezAltar,
+        ChegouNaMansao,
+        LigouEnergia,
+        ChegouNaTorre
+        
     }
 
 }
