@@ -38,7 +38,7 @@ public class EnemyListeningState : State
             {
                 j++;
             }*/
-        }
+        
     }
 
     public override void LateDo()
@@ -50,7 +50,6 @@ public class EnemyListeningState : State
     {
             
     }
-
     /*
     
     private void GerarMatriz()
@@ -63,3 +62,6 @@ public class EnemyListeningState : State
          
     }*/
 }
+
+    
+
